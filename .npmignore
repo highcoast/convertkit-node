@@ -1,0 +1,10 @@
+.env
+src
+.eslintignore
+.prettierrc
+.prettierignore
+.eslintrc.js
+.eslintrc.json
+.prettierrc.js
+tsconfig.json
+apollo.config.js

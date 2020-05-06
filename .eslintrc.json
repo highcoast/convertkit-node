@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": false,
+    "es6": true
+  },
+  "extends": ["plugin:prettier/recommended"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "require-await": "warn",
+    "require-yield": "warn"
+  },
+  "ignorePatterns": ["lib"]
+}

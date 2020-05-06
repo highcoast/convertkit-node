@@ -1,12 +1,48 @@
 {
-  "name": "convertkit-node",
+  "name": "@highcoast/convertkit-node",
+  "description": "Simple SDK built for Node.js to interact with the Convertkit API ",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --ext .ts src/",
+    "lint-fix": "npm run lint -- --fix",
+    "build": "tsc",
+    "prepare": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "convertkit"
+  ],
+  "author": "Joel Baudin <joel@highcoast.dev> (https://highcoast.dev)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hightcoast/convertkit-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hightcoast/convertkit-node/issues"
+  },
+  "homepage": "https://github.com/hightcoast/convertkit-node#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,json}": [
+      "prettier --write",
+      "npm run lint-fix"
+    ]
+  }
 }
