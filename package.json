@@ -1,5 +1,5 @@
 {
-  "name": "@highcoast/convertkit-node",
+  "name": "convertkit-node",
   "description": "Simple SDK built for Node.js to interact with the Convertkit API ",
   "version": "1.0.0",
   "main": "dist/index.js",
