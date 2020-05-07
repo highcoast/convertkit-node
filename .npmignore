@@ -7,4 +7,7 @@ src
 .eslintrc.json
 .prettierrc.js
 tsconfig.json
-apollo.config.js
+jest.config.integration.js
+jest.config.unit.js
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
