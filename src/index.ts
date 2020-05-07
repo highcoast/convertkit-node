@@ -3,18 +3,18 @@ import * as types from './types'
 import * as modelFunctions from './models'
 
 export class Convertkit {
-  private apiSecret: string
+  private apiSecret: string = ''
   private apiKey: string
   private baseApiUrl: string = 'https://api.convertkit.com/v3'
   constructor(config: types.Config) {
     if (!config.apiKey) {
       throw new Error('Missing mandatory "apiKey" in configuration')
     }
-    if (!config.apiSecret) {
-      throw new Error('Missing mandatory "apiSecret" in configuration')
-    }
-    this.apiSecret = config.apiSecret
     this.apiKey = config.apiKey
+
+    if (config.apiSecret) {
+      this.apiSecret = config.apiSecret
+    }
     if (config.baseApiUrl) {
       this.baseApiUrl = config.baseApiUrl
     }
@@ -38,3 +38,5 @@ export class Convertkit {
     })
   }
 }
+
+export default Convertkit

@@ -2,8 +2,8 @@ import { AxiosStatic } from 'axios'
 import { AddSubscriberInput } from './models/subscriber/types'
 
 export type Config = {
-  apiSecret: string
   apiKey: string
+  apiSecret?: string
   baseApiUrl?: string
 }
 
