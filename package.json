@@ -19,12 +19,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hightcoast/convertkit-node.git"
+    "url": "git+https://github.com/highcoast/convertkit-node.git"
   },
   "bugs": {
-    "url": "https://github.com/hightcoast/convertkit-node/issues"
+    "url": "https://github.com/highcoast/convertkit-node/issues"
   },
-  "homepage": "https://github.com/hightcoast/convertkit-node#readme",
+  "homepage": "https://github.com/highcoast/convertkit-node#readme",
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/jest": "^25.2.1",
