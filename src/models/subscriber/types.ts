@@ -2,6 +2,12 @@ import * as rootTypes from '../../types'
 
 type SubscriptionState = 'active' | 'inactive' | 'cancelled'
 
+export type Tag = {
+  id: number
+  name: string
+  created_at: string
+}
+
 type CustomFields = {
   [key: string]: unknown
 }
@@ -38,9 +44,16 @@ export type AddSubscriberResponse = {
 export type GetSubscriberInput = {
   subscriberId: number
 }
+export type GetSubscriberTagsInput = {
+  subscriberId: number
+}
 export type GetSubscriber = {
   context: rootTypes.Context
   input: GetSubscriberInput
+}
+export type GetSubscriberTags = {
+  context: rootTypes.Context
+  input: GetSubscriberTagsInput
 }
 export type GetSubscriberResponse = {
   subscriber: {
@@ -52,7 +65,9 @@ export type GetSubscriberResponse = {
     fields: CustomFields
   }
 }
-
+export type GetSubscriberTagsResponse = {
+  tags: Tag[]
+}
 export type RemoveSubscriberInput = {
   email: string
 }

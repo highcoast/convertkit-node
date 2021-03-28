@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 import { mocked } from 'ts-jest/dist/util/testing'
-import { addSubscriber, getSubscriber, removeSubscriber } from './index'
+import { addSubscriber, getSubscriber, getSubscriberTags, removeSubscriber } from './index'
 import * as types from './types'
 
 jest.mock('axios')
@@ -238,6 +238,52 @@ describe('getSubscriber', () => {
       subscriberId: 1234,
     }
     const res = await getSubscriber({
+      context,
+      input,
+    })
+    expect(axios.get).toHaveBeenCalledTimes(1)
+    expect(res).toBe(axiosResponse.data)
+    mocked(axios.get).mockReset()
+  })
+})
+
+describe('getSubscriberTags', () => {
+  it('works as expected with minimal input', async () => {
+    expect.assertions(2)
+    const axiosResponse: AxiosResponse<types.GetSubscriberTagsResponse> = {
+      data: {
+        tags: [
+          {
+            id: 1234,
+            name: 'test_tag_1',
+            created_at: '2021-03-19T00:54:50.000Z',
+          },
+          {
+            id: 5678,
+            name: 'test_tag_2',
+            created_at: '2021-03-28T15:27:48.000Z',
+          },
+        ],
+      },
+      status: 200,
+      statusText: 'OK',
+      config: {},
+      headers: {},
+    }
+    mocked(axios.get).mockResolvedValue(axiosResponse)
+
+    const context: types.GetSubscriberTags['context'] = {
+      axios,
+      api: {
+        key: '123',
+        secret: '456',
+        url: `https://api.convertkit.com/v3`,
+      },
+    }
+    const input: types.GetSubscriberTags['input'] = {
+      subscriberId: 1234,
+    }
+    const res = await getSubscriberTags({
       context,
       input,
     })

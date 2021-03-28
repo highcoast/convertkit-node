@@ -42,6 +42,27 @@ export const getSubscriber = async ({ context, input }: types.GetSubscriber): Pr
   return res.data
 }
 
+export const getSubscriberTags = async ({
+  context,
+  input,
+}: types.GetSubscriberTags): Promise<types.GetSubscriberTagsResponse> => {
+  const { axios, api } = context
+  if (!api.secret || !api.url || !input.subscriberId) {
+    throw new Error('Mandatory values missing')
+  }
+  const res = await axios
+    .get<types.GetSubscriberTagsResponse>(`${api.url}/subscribers/${input.subscriberId}/tags`, {
+      params: {
+        api_secret: api.secret,
+      },
+    })
+    .catch((error) => {
+      console.log('getSubscriberTags error', error)
+      throw error
+    })
+  return res.data
+}
+
 export const removeSubscriber = async ({
   context,
   input,
