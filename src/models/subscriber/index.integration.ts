@@ -3,7 +3,7 @@ dotenv.config()
 import axios from 'axios'
 import get from 'lodash/get'
 import parseInt from 'lodash/parseInt'
-import { addSubscriber, getSubscriber, removeSubscriber } from './index'
+import { addSubscriber, getSubscriber, getSubscriberTags, removeSubscriber } from './index'
 
 describe('addSubscriber', () => {
   it('works as expected with minimal input', async () => {
@@ -79,5 +79,30 @@ describe('addSubscriber', () => {
       },
     })
     expect(afterUnsubscribe.subscriber.state).toEqual('cancelled')
+  })
+})
+
+describe('getSubscriberTags', () => {
+  it('lists the tags for a subscriber', async () => {
+    expect.assertions(1)
+    const apiKey = get(process, 'env.CONVERTKIT_API_KEY')
+    const apiSecret = get(process, 'env.CONVERTKIT_API_SECRET')
+    const subscriberIdToTest = get(process, 'env.CONVERTKIT_TESTING_SUBSCRIBER_ID')
+
+    const res = await getSubscriberTags({
+      context: {
+        axios,
+        api: {
+          key: apiKey,
+          secret: apiSecret,
+          url: `https://api.convertkit.com/v3`,
+        },
+      },
+      input: {
+        subscriberId: subscriberIdToTest,
+      },
+    })
+
+    expect(Array.isArray(res.tags)).toBe(true)
   })
 })
